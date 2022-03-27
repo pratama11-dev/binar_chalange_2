@@ -1,5 +1,3 @@
-
-
 //Variables
 const rock_user = document.getElementById('r-user');
 const paper_user = document.getElementById('p-user');
@@ -10,8 +8,8 @@ const scissors_com = document.getElementById('s-com');
 const winBox = document.getElementById('box');
 const inFo = document.getElementById("h1");
 const refresh = document.getElementById("refresh");
-const x = document.querySelector(".user-tool");
-const addElement1 = [...document.getElementsByClassName("dissap")];
+const userTool = document.querySelector(".user-tool");
+const addElement = [...document.getElementsByClassName("dissap")];
 const button = document.querySelector('button');
 
 //Computer Think
@@ -24,13 +22,12 @@ function comThink() {
 //Color Change
 function resultObject() {
     winBox.classList.add('winBox'),
-        inFo.setAttribute("style", "font-size:36px; color:white;");
+    inFo.setAttribute("style", "font-size:36px; color:white;");
 
 }
 
 function resultDraw() {
     winBox.classList.add('drawBox');
-
     inFo.setAttribute("style", "font-size:36px; color:white;");
 
 }
@@ -46,25 +43,21 @@ function win() {
 function lose() {
     console.log("COM WIN");
     resultObject();
-
     inFo.innerText = "COM WIN"
 }
 
 function draw() {
     console.log("Draw");
     resultDraw();
-
     inFo.innerText = "Draw"
 }
 
 
 // gameCompare
 function gameCompare(pilihanUser) {
-
     const computerUser = comThink();
     console.log("Hasil User => " + pilihanUser);
     console.log("Hasil dari => " + computerUser);
-
     switch (pilihanUser + computerUser) {
         case "BatuGunting":
         case "GuntingKertas":
@@ -81,7 +74,6 @@ function gameCompare(pilihanUser) {
         case "BatuBatu":
         case "KertasKertas":
             draw();
-
     }
 
 
@@ -95,11 +87,7 @@ function gameCompare(pilihanUser) {
             break;
         case "Kertas":
             paper_com.classList.add('chosen');
-
-
     }
-
-
 }
 
 
@@ -108,7 +96,7 @@ function play() {
     rock_user.addEventListener('click', function() {
         this.classList.add('chosen');
         gameCompare("Batu");
-        addElement1.forEach(addElement3 => {
+        addElement.forEach(addElement3 => {
             addElement3.setAttribute("style", "cursor: not-allowed;pointer-events: none;")
         })
 
@@ -117,7 +105,7 @@ function play() {
     paper_user.addEventListener('click', function() {
         this.classList.add('chosen');
         gameCompare("Kertas");
-        addElement1.forEach(addElement3 => {
+        addElement.forEach(addElement3 => {
             addElement3.setAttribute("style", "cursor: not-allowed;pointer-events: none;")
         })
     })
@@ -125,27 +113,23 @@ function play() {
     scissors_user.addEventListener('click', function() {
         this.classList.add('chosen');
         gameCompare("Gunting");
-        addElement1.forEach(addElement3 => {
+        addElement.forEach(addElement3 => {
             addElement3.setAttribute("style", "cursor: not-allowed;pointer-events: none;");
         })
     })
-
-
 }
 
 play();
-
-
 
 
 // Refresh Listemner
 refresh.addEventListener('click', function() {
     //window.location.reload();
 
-    addElement1.forEach(addElement2 => {
+    addElement.forEach(addElement2 => {
         addElement2.classList.remove('chosen')
     });
-    addElement1.forEach(addElement3 => {
+    addElement.forEach(addElement3 => {
         addElement3.removeAttribute("style", "cursor: not-allowed;pointer-events: none;")
 
     })
